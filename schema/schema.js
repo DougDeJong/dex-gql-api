@@ -13,25 +13,25 @@ const Book = require("../models/book");
 const Author = require("../models/author");
 
 // seed data for books
-var books = [
-  { name: "Outliers", id: "1", genre: "non-fiction", authorId: "1" },
-  { name: "The Road", id: "2", genre: "fiction", authorId: "2" },
-  { name: "House of Leaves", id: "3", genre: "horror", authorId: "3" },
-  { name: "The Tipping Point", id: "4", genre: "non-fiction", authorId: "1" },
-  { name: "Only Revolutions", id: "5", genre: "suspense", authorId: "3" },
-  {
-    name: "Blood Meridian",
-    id: "6",
-    genre: "historical fiction",
-    authorId: "2"
-  }
-];
+// var books = [
+//   { name: "Outliers", id: "1", genre: "non-fiction", authorId: "1" },
+//   { name: "The Road", id: "2", genre: "fiction", authorId: "2" },
+//   { name: "House of Leaves", id: "3", genre: "horror", authorId: "3" },
+//   { name: "The Tipping Point", id: "4", genre: "non-fiction", authorId: "1" },
+//   { name: "Only Revolutions", id: "5", genre: "suspense", authorId: "3" },
+//   {
+//     name: "Blood Meridian",
+//     id: "6",
+//     genre: "historical fiction",
+//     authorId: "2"
+//   }
+// ];
 
-var authors = [
-  { name: "Malcolm Gladwell", id: "1", age: 55 },
-  { name: "Cormack McCarthy", id: "2", age: 85 },
-  { name: "Mark Z. Danielewski", id: "3", age: 52 }
-];
+// var authors = [
+//   { name: "Malcolm Gladwell", id: "1", age: 55 },
+//   { name: "Cormack McCarthy", id: "2", age: 85 },
+//   { name: "Mark Z. Danielewski", id: "3", age: 52 }
+// ];
 
 const BookType = new GraphQLObjectType({
   name: "Book",
@@ -123,7 +123,7 @@ const Mutation = new GraphQLObjectType({
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) },
         genre: { type: new GraphQLNonNull(GraphQLString) },
-        authorId: { type: new GraphQlNonNull(GraphQLID) }
+        authorId: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(parent, args) {
         let book = new Book({
