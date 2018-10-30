@@ -5,9 +5,9 @@ const _ = require('lodash');
 
 // seed data for books 
 var books = [
-  {name: 'Outliers', id: '1', genre: 'non-fiction'},
-  {name: 'The Road', id: '2', genre: 'fiction'},
-  {name: 'House of Leaves', id: '3', genre: 'horror'}
+  {name: 'Outliers', id: '1', genre: 'non-fiction', authorId: '1'},
+  {name: 'The Road', id: '2', genre: 'fiction', authorId: '2'},
+  {name: 'House of Leaves', id: '3', genre: 'horror', authorId: '3'}
 ];
 
 var authors = [
@@ -22,7 +22,13 @@ const BookType = new GraphQLObjectType({
   fields: () => ({
       id: {type: GraphQLID },
       name: {type: GraphQLString},
-      genre: {type: GraphQLString}
+      genre: {type: GraphQLString},
+      author: {
+        type: AuthorType,
+        resolve(parent, args){
+          return _.find(authors, {id: parent.authorId})
+        }
+      }
   })
 });
 
