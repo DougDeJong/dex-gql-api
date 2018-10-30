@@ -1,12 +1,13 @@
 const graphql = require('graphql');
 const {GraphQLObjectType, GraphQLString, GraphQLSchema} = graphql;
+const _ = require('lodash');
 
 
-
+// seed data for books 
 var books = [
-  {name: 'The First Book', id: '1', genre: 'non-fiction'},
-  {name: 'The Second Book', id: '2', genre: 'fiction'},
-  {name: 'The Third Book', id: '3', genre: 'horror'}
+  {name: 'Outliers', id: '1', genre: 'non-fiction'},
+  {name: 'The Road', id: '2', genre: 'fiction'},
+  {name: 'House of Leaves', id: '3', genre: 'horror'}
 ];
 
 
@@ -26,7 +27,8 @@ const RootQuery = new GraphQLObjectType({
       type: BookType,
       args: {id:{type: GraphQLString}},
       resolve(parent,args){
-        //code to get data from db or other source 
+        
+      return  _.find(books, {id: args.id})
       }
     }
   }
