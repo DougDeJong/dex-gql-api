@@ -6,7 +6,8 @@ const {
   GraphQLID,
   GraphQLInt,
   GraphQLList,
-  GraphQLNonNull
+  GraphQLNonNull,
+  buildSchema
 } = graphql;
 const _ = require("lodash");
 const Book = require("../models/book");
@@ -137,7 +138,7 @@ const Mutation = new GraphQLObjectType({
   }
 });
 
-module.exports = new GraphQLSchema({
+module.exports = buildSchema({
   query: RootQuery,
   mutation: Mutation
 });
